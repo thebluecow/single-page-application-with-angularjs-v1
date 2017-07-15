@@ -5,7 +5,7 @@ angular.module('app')
 	
 		let path = $location.path().split('/');
 		let id = path[path.length - 1];
-		vm.error = false;
+		vm.error = true;
 		
 		// set up page variables
 		vm.categories = {};
@@ -101,6 +101,7 @@ angular.module('app')
 		// set the recipe so that it's seen as being edited
 		vm.setCurrentRecipe = function (recipe) {
 			vm.new = false;
+			vm.error = false;
 			vm.editedRecipe = angular.copy(recipe);
 		};
 

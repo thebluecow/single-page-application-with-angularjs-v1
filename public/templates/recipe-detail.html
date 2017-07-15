@@ -11,7 +11,7 @@
     <div class="flush-right">
       <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
         buttons in order to handle user clicks. -->
-      <button ng-click="vm.add(vm.editedRecipe)">Save Recipe</button>
+      <button ng-click="vm.add(vm.editedRecipe)" ng-disabled="form.$invalid && vm.error">Save Recipe</button>
       <button class="secondary" ng-click="vm.go('/')">Cancel</button>
     </div>
   </div>
@@ -29,12 +29,13 @@
       <!-- TODO Add a directive to this input element to bind its value
         to the recipe model's `name` property. -->
       <input type="text" name="name" ng-model="vm.editedRecipe.name" required>
-    <div role="alert">
-    	<span class="error" ng-show="form.name.$error.required">*required</span>
-  	</div>
     </p>
 </div>
-</div>
+<div class="grid-20">
+    <p class="label-spacing">
+      <label class="error" ng-show="form.name.$error.required"> *required</label>
+    </p>
+	</div>
 <div class="clear"></div>
 
 <div class="grid-100 row">
@@ -48,11 +49,13 @@
       <!-- TODO Add a directive to this textarea element to bind its content
         to the recipe model's `description` property. -->
       <textarea name="description" ng-model="vm.editedRecipe.description" required></textarea>
-      <div role="alert">
-    	<span class="error" ng-show="form.description.$error.required">*required</span>
-  	</div>
     </p>
   </div>
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label class="error" ng-show="form.description.$error.required"> *required</label>
+    </p>
+	</div>
 </div>
 <div class="clear"></div>
 
@@ -85,10 +88,12 @@
     <p>
       <!-- TODO Add a directive to this input element to bind its value
         to the recipe model's `prepTime` property. -->
-      <input type="number" name="prepTime" ng-model="vm.editedRecipe.prepTime" required>
-      <div role="alert">
-    	<span class="error" ng-show="form.prepTime.$error.required">*required</span>
-  	</div>
+      <input type="number" numbers-only name="prepTime" ng-pattern="/^(\d)+$/" ng-model="vm.editedRecipe.prepTime" required>
+    </p>
+  </div>
+    <div class="grid-20">
+    <p class="label-spacing">
+      <label class="error" ng-show="form.prepTime.$invalid"> *num required</label>
     </p>
   </div>
 </div>
@@ -104,10 +109,12 @@
     <p>
       <!-- TODO Add a directive to this input element to bind its value
         to the recipe model's `cookTime` property. -->
-      <input type="number" name="cookTime" ng-model="vm.editedRecipe.cookTime" required>
-      <div role="alert">
-    	<span class="error" ng-show="form.cookTime.$error.required">*required</span>
-  	</div>
+      <input type="number" numbers-only name="cookTime" ng-pattern="/^(\d)+$/" ng-model="vm.editedRecipe.cookTime" required>
+    </p>
+  </div>
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label class="error" ng-show="form.cookTime.$invalid"> *num required</label>
     </p>
   </div>
 </div>
