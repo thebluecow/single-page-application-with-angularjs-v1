@@ -96,6 +96,8 @@ angular.module('app')
 		vm.removeItem = function (item, array) {
 			let index = array.indexOf(item);
 			array.splice(index, 1);
+			
+			vm.checkValid();
 		}
 
 		// set the recipe so that it's seen as being edited

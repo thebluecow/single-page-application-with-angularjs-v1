@@ -11,7 +11,7 @@
     <div class="flush-right">
       <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
         buttons in order to handle user clicks. -->
-      <button ng-click="vm.add(vm.editedRecipe)" ng-disabled="form.$invalid && vm.error">Save Recipe</button>
+      <button ng-click="vm.add(vm.editedRecipe)" ng-disabled="form.$invalid || vm.error">Save Recipe</button>
       <button class="secondary" ng-click="vm.go('/')">Cancel</button>
     </div>
   </div>
